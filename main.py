@@ -44,7 +44,7 @@ def demo_contract_definition():
         }
     }).with_status(200)
     
-    print("\n📝 Contract Created:")
+    print("\n[EMOJI] Contract Created:")
     print(f"   Name: {contract.name}")
     print(f"   Method: {contract.method}")
     print(f"   Path: {contract.path}")
@@ -59,7 +59,7 @@ def demo_schema_validation():
     validator = SchemaValidator()
     
     # Valid data
-    print("\n✅ Testing valid data:")
+    print("\n[EMOJI] Testing valid data:")
     valid_data = {
         'username': 'john_doe',
         'email': 'john@example.com',
@@ -70,7 +70,7 @@ def demo_schema_validation():
     print(f"   Valid: {result['valid']}")
     
     # Invalid data
-    print("\n❌ Testing invalid data:")
+    print("\n[EMOJI] Testing invalid data:")
     invalid_data = {
         'username': 'ab',  # Too short
         'email': 'invalid-email'  # Invalid format
@@ -89,11 +89,11 @@ def demo_mock_server():
     # Create mock server
     mock = create_user_mock_server()
     
-    print("\n🎭 Mock Server Created:")
+    print("\n[EMOJI] Mock Server Created:")
     print(f"   Mocks registered: {len(mock.mocks)}")
     
     # Show registered mocks
-    print("\n📋 Registered Mocks:")
+    print("\n[EMOJI] Registered Mocks:")
     for key in mock.mocks.keys():
         print(f"   - {key}")
 
@@ -105,13 +105,13 @@ def demo_consumer_contracts():
     # Create consumer contract
     contract = mobile_app_user_contract()
     
-    print(f"\n📱 Consumer Contract:")
+    print(f"\n[EMOJI] Consumer Contract:")
     print(f"   Consumer: {contract.consumer_name}")
     print(f"   Provider: {contract.provider_name}")
     print(f"   Interactions: {len(contract.interactions)}")
     
     # Show interactions
-    print("\n📋 Interactions:")
+    print("\n[EMOJI] Interactions:")
     for i, interaction in enumerate(contract.interactions, 1):
         print(f"   {i}. {interaction['description']}")
         print(f"      Request: {interaction['request']['method']} {interaction['request']['path']}")
@@ -125,14 +125,14 @@ def demo_api_specification():
     # Create API spec
     spec = create_sample_api_spec()
     
-    print(f"\n📚 API Specification:")
+    print(f"\n[EMOJI] API Specification:")
     print(f"   Title: {spec.title}")
     print(f"   Version: {spec.version}")
     print(f"   Base URL: {spec.base_url}")
     print(f"   Endpoints: {len(spec.endpoints)}")
     
     # Show endpoints
-    print("\n📋 Documented Endpoints:")
+    print("\n[EMOJI] Documented Endpoints:")
     for path, methods in spec.endpoints.items():
         for method in methods.keys():
             print(f"   - {method} {path}")
@@ -169,7 +169,7 @@ def demo_openapi_generation():
     # Generate spec
     openapi_spec = generator.generate()
     
-    print("\n📄 OpenAPI Specification Generated:")
+    print("\n[EMOJI] OpenAPI Specification Generated:")
     print(f"   OpenAPI Version: {openapi_spec['openapi']}")
     print(f"   API Title: {openapi_spec['info']['title']}")
     print(f"   API Version: {openapi_spec['info']['version']}")
@@ -185,7 +185,7 @@ def demo_mock_responses():
     list_response = get_mock_response('user', 'list_users')
     error_response = get_mock_response('error', 'not_found')
     
-    print("\n🎭 Mock Response Examples:")
+    print("\n[EMOJI] Mock Response Examples:")
     print(f"\n   User Response:")
     print(f"   {user_response}")
     
@@ -230,7 +230,7 @@ def main():
         print()
         
     except Exception as e:
-        print(f"\n❌ Error: {e}")
+        print(f"\n[EMOJI] Error: {e}")
         import traceback
         traceback.print_exc()
 

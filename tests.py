@@ -45,8 +45,8 @@ class APIContractTestingTestCase(unittest.TestCase):
         self.assertEqual(contract.path, "/api/test")
         self.assertEqual(contract.expected_status, 200)
         
-        print(f"   ✅ Contract created: {contract.name}")
-        print(f"   ✅ Method: {contract.method}, Path: {contract.path}")
+        print(f"   [EMOJI] Contract created: {contract.name}")
+        print(f"   [EMOJI] Method: {contract.method}, Path: {contract.path}")
     
     # Test 2: Contract Registry
     def test_02_contract_registry(self):
@@ -63,11 +63,11 @@ class APIContractTestingTestCase(unittest.TestCase):
         self.assertIsNotNone(retrieved)
         self.assertEqual(retrieved.name, "Test")
         
-        print(f"   ✅ Contract registered and retrieved")
+        print(f"   [EMOJI] Contract registered and retrieved")
         
         all_contracts = registry.get_all_contracts()
         self.assertEqual(len(all_contracts), 1)
-        print(f"   ✅ Total contracts: {len(all_contracts)}")
+        print(f"   [EMOJI] Total contracts: {len(all_contracts)}")
     
     # Test 3: Schema Validation
     def test_03_schema_validation(self):
@@ -84,7 +84,7 @@ class APIContractTestingTestCase(unittest.TestCase):
         
         result = validator.validate(valid_data, CREATE_USER_REQUEST_SCHEMA)
         self.assertTrue(result['valid'])
-        print("   ✅ Valid data passed validation")
+        print("   [EMOJI] Valid data passed validation")
         
         # Invalid data
         invalid_data = {
@@ -94,7 +94,7 @@ class APIContractTestingTestCase(unittest.TestCase):
         
         result = validator.validate(invalid_data, CREATE_USER_REQUEST_SCHEMA)
         self.assertFalse(result['valid'])
-        print("   ✅ Invalid data rejected")
+        print("   [EMOJI] Invalid data rejected")
     
     # Test 4: Mock Server
     def test_04_mock_server(self):
@@ -112,12 +112,12 @@ class APIContractTestingTestCase(unittest.TestCase):
         )
         
         self.assertIn('GET:api/test', mock.mocks)
-        print("   ✅ Mock response added")
+        print("   [EMOJI] Mock response added")
         
         # Check mock data
         mock_data = mock.mocks['GET:api/test']
         self.assertEqual(mock_data['status_code'], 200)
-        print(f"   ✅ Mock configured: status {mock_data['status_code']}")
+        print(f"   [EMOJI] Mock configured: status {mock_data['status_code']}")
     
     # Test 5: Consumer Contract
     def test_05_consumer_contract(self):
@@ -136,8 +136,8 @@ class APIContractTestingTestCase(unittest.TestCase):
         self.assertEqual(contract.provider_name, "TestProvider")
         self.assertEqual(len(contract.interactions), 1)
         
-        print(f"   ✅ Consumer contract created")
-        print(f"   ✅ Interactions: {len(contract.interactions)}")
+        print(f"   [EMOJI] Consumer contract created")
+        print(f"   [EMOJI] Interactions: {len(contract.interactions)}")
     
     # Test 6: Request Schema Validation
     def test_06_request_schema_validation(self):
@@ -155,7 +155,7 @@ class APIContractTestingTestCase(unittest.TestCase):
         
         result = validator.validate_request(valid_request, CREATE_USER_REQUEST_SCHEMA)
         self.assertTrue(result['valid'])
-        print("   ✅ Valid request passed")
+        print("   [EMOJI] Valid request passed")
         
         # Invalid request (missing required field)
         invalid_request = {
@@ -165,7 +165,7 @@ class APIContractTestingTestCase(unittest.TestCase):
         
         result = validator.validate_request(invalid_request, CREATE_USER_REQUEST_SCHEMA)
         self.assertFalse(result['valid'])
-        print("   ✅ Invalid request rejected")
+        print("   [EMOJI] Invalid request rejected")
     
     # Test 7: Response Schema Validation
     def test_07_response_schema_validation(self):
@@ -183,7 +183,7 @@ class APIContractTestingTestCase(unittest.TestCase):
         
         result = validator.validate_response(valid_response, USER_RESPONSE_SCHEMA)
         self.assertTrue(result['valid'])
-        print("   ✅ Valid response passed")
+        print("   [EMOJI] Valid response passed")
         
         # Invalid response (missing required field)
         invalid_response = {
@@ -194,7 +194,7 @@ class APIContractTestingTestCase(unittest.TestCase):
         
         result = validator.validate_response(invalid_response, USER_RESPONSE_SCHEMA)
         self.assertFalse(result['valid'])
-        print("   ✅ Invalid response rejected")
+        print("   [EMOJI] Invalid response rejected")
     
     # Test 8: API Specification
     def test_08_api_specification(self):
@@ -210,8 +210,8 @@ class APIContractTestingTestCase(unittest.TestCase):
         endpoints = spec.get_all_endpoints()
         self.assertGreater(len(endpoints), 0)
         
-        print(f"   ✅ API spec created: {spec.title}")
-        print(f"   ✅ Endpoints documented: {len(endpoints)}")
+        print(f"   [EMOJI] API spec created: {spec.title}")
+        print(f"   [EMOJI] Endpoints documented: {len(endpoints)}")
     
     # Test 9: OpenAPI Generation
     def test_09_openapi_generation(self):
@@ -235,8 +235,8 @@ class APIContractTestingTestCase(unittest.TestCase):
         self.assertEqual(spec['openapi'], '3.0.0')
         self.assertIn('/api/test', spec['paths'])
         
-        print(f"   ✅ OpenAPI spec generated")
-        print(f"   ✅ OpenAPI version: {spec['openapi']}")
+        print(f"   [EMOJI] OpenAPI spec generated")
+        print(f"   [EMOJI] OpenAPI version: {spec['openapi']}")
     
     # Test 10: Test Helpers
     def test_10_test_helpers(self):
@@ -259,7 +259,7 @@ class APIContractTestingTestCase(unittest.TestCase):
         self.assertIn('age', test_data)
         self.assertIn('active', test_data)
         
-        print(f"   ✅ Test data generated: {test_data}")
+        print(f"   [EMOJI] Test data generated: {test_data}")
 
 
 def run_tests():
@@ -285,17 +285,17 @@ def run_tests():
         print(f"Success rate: {success_rate:.1f}%")
     
     if result.failures:
-        print("\n❌ FAILURES:")
+        print("\n[EMOJI] FAILURES:")
         for test, traceback in result.failures:
             print(f"  - {test}")
     
     if result.errors:
-        print("\n💥 ERRORS:")
+        print("\n[EMOJI] ERRORS:")
         for test, traceback in result.errors:
             print(f"  - {test}")
     
     if not result.failures and not result.errors:
-        print("\n🎉 ALL TESTS PASSED! 🎉")
+        print("\n[EMOJI] ALL TESTS PASSED! [EMOJI]")
     
     print("=" * 60)
     
@@ -310,10 +310,10 @@ if __name__ == "__main__":
         success = run_tests()
         exit(0 if success else 1)
     except KeyboardInterrupt:
-        print("\n\n⚠️  Tests interrupted by user")
+        print("\n\n[EMOJI]️  Tests interrupted by user")
         exit(1)
     except Exception as e:
-        print(f"\n\n💥 Unexpected error: {e}")
+        print(f"\n\n[EMOJI] Unexpected error: {e}")
         import traceback
         traceback.print_exc()
         exit(1)
